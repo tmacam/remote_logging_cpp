@@ -18,12 +18,16 @@ int MakeSocketFromAddr(const char* hostname, const char* servname);
 
 /**Remote logging made easy with a std. stream-like interface.
  *
- * This class is to be used in place of std::cout for logging to a remote
+ * This class is to be used in place of std::cout for logging. But instead of
+ * outputting (only) to the stdout, it will output to a remote
  * udp server. If no server is supplied or setup than it will just output
  * to std::cout.
  *
  * An optional prefix can be set and will be prepended to every message "logged"
  * using this class.
+ *
+ * Notice that, just as logging w/ printf's std::cout, this is a blocking
+ * logging facility.
  *
  */
 class RemoteLogging {
