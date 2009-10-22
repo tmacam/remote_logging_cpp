@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+namespace tmacam {
+
 /** Make a UDP client socket connected to hostname:servname
  *
  * Errors returned by the syscalls used by this function are reported to
@@ -67,5 +69,7 @@ private:
 	RemoteLogging(const RemoteLogging&);
 	RemoteLogging& operator=(const RemoteLogging&);
 };
+
+}; // namespace tmacam
 
 #endif /* REMOTE_LOGGING_HPP_ */
