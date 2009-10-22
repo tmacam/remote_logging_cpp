@@ -63,7 +63,7 @@ int MakeSocketFromAddr(const char* hostname, const char* servname) {
 }
 
 
-std::string RemoteLogging::prefix() { return prefix_; }
+std::string RemoteLogging::prefix() const { return prefix_; }
 
 RemoteLogging& RemoteLogging::set_prefix(const std::string& prefix ) {
 	prefix_ = prefix;

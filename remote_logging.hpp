@@ -49,7 +49,7 @@ public:
 		}
 	}
 
-	std::string prefix();
+	std::string prefix() const;
 	RemoteLogging& set_prefix(const std::string& prefix );
 
 	RemoteLogging& set_loghost(const char* host, const char* port);
