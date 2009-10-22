@@ -74,6 +74,7 @@ RemoteLogging& RemoteLogging::set_prefix(const std::string& prefix ) {
 
 RemoteLogging& RemoteLogging::set_loghost(const char* host, const char* port) {
 	skt_ = MakeSocketFromAddr(host, port);
+	return *this;
 }
 
 
