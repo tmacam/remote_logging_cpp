@@ -9,7 +9,7 @@ def create_udp_server_socket(endpoint):
     return skt
 
 if __name__ == '__main__':
-    ENDPOINT = ("localhost", 3000)
+    ENDPOINT = ("", 3000)       # empty string == INADDR_ANY
     skt = create_udp_server_socket(ENDPOINT)
     while True:
         data, (host, port) = skt.recvfrom(1500)
