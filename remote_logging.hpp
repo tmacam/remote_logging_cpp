@@ -2,6 +2,7 @@
 #define REMOTE_LOGGING_HPP_
 
 #include <iostream>
+#include <sstream>
 #include <string>
 
 namespace tmacam {
@@ -34,6 +35,7 @@ class RemoteLogging {
 
 	int skt_; // the socket file descriptor
 	std::string prefix_;
+	std::ostringstream msg_buffer_;
 
 public:
 	//!Default constructor -- forces logging to stdout.
@@ -60,12 +62,24 @@ public:
 
 	RemoteLogging& set_loghost(const char* host, const char* port);
 
-	RemoteLogging& operator<<(const std::string& msg);
+	/** Add msg to the log buffer.
+	 *
+	 * Output will be delayed untill Flush() is called. Applying a
+	 * std::endl to us has the same effect of calling Flush().
+	 *
+	 */
+	template <class T> RemoteLogging& operator<<(const T& msg) {
+		msg_buffer_ << msg;
+		return *this;
+	}
+
+	//! Force outputing the log buffer contents.
+	RemoteLogging& Flush();
 
 	// Deals with << endl in a sane manner.
 	// http://bytes.com/topic/c/answers/128046-std-endl-type-unknown
 	inline RemoteLogging& operator<<( std::ostream& (*f)(std::ostream&) ) {
-		return *this; 
+		return this->Flush(); 
 	}
 
 private:

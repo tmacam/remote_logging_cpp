@@ -76,8 +76,11 @@ RemoteLogging& RemoteLogging::set_loghost(const char* host, const char* port) {
 	skt_ = MakeSocketFromAddr(host, port);
 }
 
-RemoteLogging& RemoteLogging::operator<<(const std::string& msg) {
-	std::string log_msg = prefix_ + msg;
+
+
+RemoteLogging& RemoteLogging::Flush() {
+	std::string log_msg = prefix_ + msg_buffer_.str();
+	msg_buffer_.str(""); // clear msg_buffer_
 	if (skt_ ) {
 		int res;
 		res = send(skt_, log_msg.c_str(), log_msg.size(), 0);
@@ -89,6 +92,7 @@ RemoteLogging& RemoteLogging::operator<<(const std::string& msg) {
 	} else {
 		std::cout << log_msg << std::endl;
 	}
+
 	return *this;
 }
 
