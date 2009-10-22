@@ -1,5 +1,5 @@
-#ifndef REMOTE_LOGGING_H_
-#define REMOTE_LOGGING_H_
+#ifndef REMOTE_LOGGING_HPP_
+#define REMOTE_LOGGING_HPP_
 
 #include <iostream>
 #include <string>
@@ -68,4 +68,4 @@ private:
 	RemoteLogging& operator=(const RemoteLogging&);
 };
 
-#endif /* REMOTE_LOGGING_H_ */
+#endif /* REMOTE_LOGGING_HPP_ */
