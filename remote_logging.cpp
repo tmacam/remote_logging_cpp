@@ -8,7 +8,7 @@
 
 #define BEEN_HERE std::cout << __PRETTY_FUNCTION__ << " (" << __FILE__ << ":" << __LINE__ << ")" << std::endl
 
-using namespace tmacam;
+namespace tmacam {
 
 int MakeSocketFromAddr(const char* hostname, const char* servname) {
 	const int ERROR = -1;
@@ -92,4 +92,4 @@ RemoteLogging& RemoteLogging::operator<<(const std::string& msg) {
 	return *this;
 }
 
-
+}; //namespace tmacam
