@@ -1,0 +1,12 @@
+A simple drop-in "replacement" for std::cout as logging facility but that logs
+to a remove UDP server instead of (only) to the stdout.
+
+WARNING:
+    this is a lame C++ logging facility. You should probably use glog or
+    something from boost. See: http://code.google.com/p/google-glog/ or
+    http://torjo.com/log2/doc/html/index.html or http://www.boost.org
+
+See remote_logging.hpp for documentation, main.cpp for a usage example.
+
+This lame code is distributed under the MIT/X11 license. See LICENSE for
+further information.
