@@ -3,6 +3,7 @@
 
 from socket import socket, AF_INET, SOCK_DGRAM
 from optparse import OptionParser
+from time import time
 
 def create_udp_server_socket(endpoint):
     skt = socket(AF_INET, SOCK_DGRAM)
@@ -27,7 +28,7 @@ if __name__ == '__main__':
 
     while True:
         data, (host, port) = skt.recvfrom(1500)
-        log_line = "(%s:%i) %s\n" % (host, port, data)
+        log_line = "(%s:%i) %15.2f %s\n" % (host, port, time(), data)
         print log_line,
         if append_file:
             append_file.write(log_line)
